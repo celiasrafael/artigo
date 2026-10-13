@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portefólio | Marketing Digital II</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --bg2:#11182b;
+      --card:#151d33;
+      --text:#f4f6fb;
+      --muted:#aeb7cc;
+      --accent:#ff8a3d;
+      --accent2:#ffc36b;
+      --line:#26314f;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,138,61,.14), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255,195,107,.08), transparent 25%),
+        var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:0 auto}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(11,16,32,.82);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .brand span{color:var(--accent)}
+    .navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.93rem;color:var(--muted)}
+    .navlinks a:hover{color:var(--white)}
+    .hero{
+      min-height:78vh;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      align-items:center;
+      gap:48px;
+      padding:78px 0 56px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;align-items:center;
+      color:var(--accent2);
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+    h1{
+      margin:.4rem 0 1rem;
+      font-size:clamp(3rem,7vw,6.2rem);
+      line-height:.95;
+      letter-spacing:-.05em;
+    }
+    .hero p{font-size:1.16rem;color:var(--muted);max-width:720px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      display:inline-block;padding:12px 18px;border-radius:999px;
+      border:1px solid var(--line);font-weight:700;
+    }
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#1b1020;border:none}
+    .btn.secondary:hover{border-color:var(--accent)}
+    .profile-card{
+      padding:26px;border:1px solid var(--line);border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      box-shadow:0 24px 80px rgba(0,0,0,.35);
+    }
+    .avatar{
+      aspect-ratio:1/1;border-radius:22px;
+      background:
+        linear-gradient(135deg,rgba(255,138,61,.85),rgba(255,195,107,.85)),
+        #222;
+      display:grid;place-items:center;
+      font-size:4rem;font-weight:900;color:#16111f;
+      margin-bottom:18px;
+    }
+    .meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .meta div{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+    .meta small{display:block;color:var(--muted)}
+    section{padding:84px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:32px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);margin:0;letter-spacing:-.03em}
+    .section-head p{max-width:580px;color:var(--muted);margin:0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      border:1px solid var(--line);border-radius:22px;padding:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    }
+    .card h3{margin-top:0}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,138,61,.12);color:var(--accent2);font-size:.78rem;font-weight:700}
+    .project{
+      display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;
+      padding:28px;border:1px solid var(--line);border-radius:28px;
+      background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      margin-bottom:24px;
+    }
+    .visual{
+      min-height:280px;border-radius:20px;
+      background:
+        radial-gradient(circle at 75% 25%, rgba(255,255,255,.16), transparent 15%),
+        linear-gradient(140deg,#f17135,#ffba62 60%,#2a1938);
+      position:relative;overflow:hidden;
+    }
+    .visual:after{
+      content:"CAMPAIGN CASE";
+      position:absolute;bottom:18px;left:18px;
+      color:#251328;font-weight:900;letter-spacing:.08em;
+      background:rgba(255,255,255,.65);padding:7px 10px;border-radius:8px;
+    }
+    .project ul{padding-left:18px;color:var(--muted)}
+    .flow{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0
+    }
+    .flow span{
+      padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:#121a2d
+    }
+    .arrow{color:var(--accent);font-weight:900}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .kpi{
+      padding:16px;border-radius:16px;border:1px solid var(--line);text-align:center;
+      background:#10172a
+    }
+    .kpi strong{font-size:1.55rem;display:block}
+    .timeline{display:grid;gap:14px}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+    .num{
+      width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));color:#241426;font-weight:900
+    }
+    .step div:last-child{padding:12px 0 4px;border-bottom:1px solid var(--line)}
+    footer{padding:34px 0 54px;border-top:1px solid var(--line);color:var(--muted)}
+    .note{
+      border-left:3px solid var(--accent);
+      padding:14px 16px;background:rgba(255,138,61,.08);border-radius:10px;
+      color:#f2dccb;margin-top:18px
+    }
+    @media(max-width:850px){
+      .hero,.project{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .kpi-grid{grid-template-columns:1fr 1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:10px}
+      .navlinks{display:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">MD<span>II</span> Portfolio</div>
+      <div class="navlinks">
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#mdii">Marketing Digital II</a>
+        <a href="#contactos">Contactos</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container hero">
+    <div>
+      <div class="eyebrow">Marketing Turístico · 2026/27</div>
+      <h1>Olá, sou a/o<br>Nome do Estudante.</h1>
+      <p>Estudante de Marketing Turístico com interesse em marketing digital, conteúdo, turismo e experiências. Este portefólio reúne projetos, campanhas e aprendizagens desenvolvidas ao longo da formação, com destaque para a UC de Marketing Digital II.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#mdii">Ver projeto MDII</a>
+        <a class="btn secondary" href="#contactos">Contactar</a>
+      </div>
+    </div>
+
+    <aside class="profile-card">
+      <div class="avatar">NE</div>
+      <h3>Nome do Estudante</h3>
+      <p style="color:var(--muted)">Marketing Turístico · Conteúdo Digital · Campanhas · Turismo</p>
+      <div class="meta">
+        <div><small>Localização</small><strong>Portugal</strong></div>
+        <div><small>Interesse</small><strong>Turismo Digital</strong></div>
+        <div><small>Ferramentas</small><strong>Canva · Mailchimp</strong></div>
+        <div><small>Disponível para</small><strong>Estágio / Projeto</strong></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="sobre">
+    <div class="container">
+      <div class="section-head">
+        <h2>Sobre mim</h2>
+        <p>Uma apresentação curta e profissional: quem sou, em que áreas quero trabalhar e que valor posso acrescentar.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <span class="tag">01 · Perfil</span>
+          <h3>Posicionamento</h3>
+          <p>Interesse em comunicação digital aplicada ao turismo, criação de conteúdos e desenvolvimento de campanhas orientadas para a experiência do visitante.</p>
+        </div>
+        <div class="card">
+          <span class="tag">02 · Competências</span>
+          <h3>O que sei fazer</h3>
+          <p>Planeamento de campanhas, produção de conteúdo, criação de landing pages, email marketing, anúncios digitais e leitura de métricas.</p>
+        </div>
+        <div class="card">
+          <span class="tag">03 · Ferramentas</span>
+          <h3>Tech stack</h3>
+          <p>Canva, Mailchimp, Google Sites, Meta Ads Manager, Google Ads, ChatGPT e ferramentas de edição de vídeo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projetos anteriores</h2>
+        <p>Selecionar apenas 1–2 trabalhos relevantes. Se forem projetos de grupo, identificar claramente a contribuição individual.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Projeto académico</span>
+        <h3>Projeto de Marketing Digital I</h3>
+        <p>Breve descrição do projeto realizado no ano anterior.</p>
+        <p><strong>A minha contribuição:</strong> pesquisa de público, criação de conteúdos e apresentação final.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="mdii">
+    <div class="container">
+      <div class="section-head">
+        <h2>Marketing Digital II</h2>
+        <p>Case study principal do semestre: tendência, conteúdo, campanha, conversão, publicidade, mobile e analytics.</p>
+      </div>
+
+      <article class="project">
+        <div class="visual"></div>
+        <div>
+          <span class="tag">Case Study 2026/27</span>
+          <h3 style="font-size:2rem;margin-bottom:.4rem">Discover Óbidos After Dark</h3>
+          <p style="color:var(--muted)">Exemplo fictício de campanha integrada para promover experiências noturnas e culturais junto de jovens adultos e visitantes de curta duração.</p>
+
+          <h4>Desafio</h4>
+          <p>Como aumentar a notoriedade das experiências noturnas de Óbidos e gerar tráfego qualificado para uma landing page temática?</p>
+
+          <h4>Insight</h4>
+          <p>Os visitantes procuram experiências autênticas, partilháveis e fáceis de descobrir em mobile.</p>
+
+          <h4>Big Idea</h4>
+          <p><strong>“Stay after sunset.”</strong></p>
+        </div>
+      </article>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="tag">Trend Hunter</span>
+          <h3>Tendência</h3>
+          <p><strong>Short-form video + personalização por IA.</strong></p>
+          <p>Justificação da tendência, aplicação ao turismo e análise crítica: potencial real vs. hype.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Hero Content</span>
+          <h3>Conteúdo principal</h3>
+          <p>Vídeo vertical de 45–60 segundos com narrativa visual, ambiente noturno, storytelling e CTA final.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Mobile First</span>
+          <h3>Ativação mobile</h3>
+          <p>QR code em materiais físicos que direciona para a landing page mobile com roteiro e inscrição.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <span class="tag">Campaign Flow</span>
+        <h3>Jornada digital</h3>
+        <div class="flow">
+          <span>Reel / TikTok</span><b class="arrow">→</b>
+          <span>Landing Page</span><b class="arrow">→</b>
+          <span>Formulário</span><b class="arrow">→</b>
+          <span>Email</span><b class="arrow">→</b>
+          <span>Conteúdo / Oferta</span>
+        </div>
+        <p class="note">No portefólio real, inserir links ou embeds para o vídeo, landing page, newsletter e protótipos de anúncios.</p>
+      </div>
+
+      <div class="grid-3" style="margin-top:20px">
+        <div class="card">
+          <span class="tag">Paid Media</span>
+          <h3>Anúncios</h3>
+          <p>Search Ad + Instagram Reel Ad + Display/Retargeting, com copy, criativo e segmentação justificados.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Email Marketing</span>
+          <h3>Sequência</h3>
+          <p>Email 1: descoberta · Email 2: valor · Email 3: conversão. Incluir CTA, assunto e variante A/B.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Landing Page</span>
+          <h3>Conversão</h3>
+          <p>Headline, proposta de valor, prova visual, formulário simples e CTA claro.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <span class="tag">Analytics</span>
+        <h3>Marketing Dashboard</h3>
+        <div class="kpi-grid">
+          <div class="kpi"><strong>18K</strong><small>Impressões</small></div>
+          <div class="kpi"><strong>2.8%</strong><small>CTR</small></div>
+          <div class="kpi"><strong>14%</strong><small>Conversão</small></div>
+          <div class="kpi"><strong>€1,90</strong><small>CPL</small></div>
+        </div>
+        <p style="margin-top:18px"><strong>Decisão 1:</strong> reforçar o criativo com melhor retenção. <strong>Decisão 2:</strong> testar novo CTA na landing page. <strong>Decisão 3:</strong> concentrar orçamento no segmento com CPL inferior.</p>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <span class="tag">Processo</span>
+        <h3>Como desenvolvi o projeto</h3>
+        <div class="timeline">
+          <div class="step"><div class="num">1</div><div><strong>Pesquisa</strong><br><span style="color:var(--muted)">Tendência, público, benchmark e referências.</span></div></div>
+          <div class="step"><div class="num">2</div><div><strong>Estratégia</strong><br><span style="color:var(--muted)">Objetivo SMART, mensagem, canais e journey.</span></div></div>
+          <div class="step"><div class="num">3</div><div><strong>Produção</strong><br><span style="color:var(--muted)">Vídeo, landing page, email e criativos.</span></div></div>
+          <div class="step"><div class="num">4</div><div><strong>Teste & melhoria</strong><br><span style="color:var(--muted)">KPIs, análise, feedback e otimização.</span></div></div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:20px">
+        <div class="card">
+          <span class="tag">Trabalho em equipa</span>
+          <h3>A minha contribuição</h3>
+          <p>Estratégia da campanha, copy de email, definição de KPIs e apoio na edição do vídeo.</p>
+        </div>
+        <div class="card">
+          <span class="tag">IA responsável</span>
+          <h3>AI Process Log</h3>
+          <p>IA usada para ideação e comparação de alternativas. Todos os outputs foram revistos, adaptados e validados pela equipa.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Reflexão</span>
+          <h3>O que aprendi</h3>
+          <p>Aprendi a articular conteúdo, distribuição, conversão e métricas numa campanha coerente e orientada para objetivos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contactos">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contactos</h2>
+        <p>Substituir estes elementos pelos contactos profissionais do estudante.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><h3>LinkedIn</h3><p>linkedin.com/in/nome-estudante</p></div>
+        <div class="card"><h3>Email</h3><p>nome.estudante@email.pt</p></div>
+        <div class="card"><h3>CV</h3><p>Adicionar botão/link para CV em PDF.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    Portefólio académico — Marketing Digital II · 2026/27
+  </div>
+</footer>
+</body>
+</html>
